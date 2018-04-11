@@ -45,5 +45,4 @@ module.exports = {
     }),
     new webpack.HotModuleReplacementPlugin({}),
   ],
-  watch: true,
 };
