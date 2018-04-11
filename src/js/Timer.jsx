@@ -6,6 +6,7 @@ class Timer extends React.Component {
         super();
         this.state = {
             value: 0,
+            delta: 0,
             tamerId: 0
         }
     }
@@ -15,21 +16,21 @@ class Timer extends React.Component {
     }
 
     increment() {
-        if (!this.variable) {
+        if (!this.state.delta) {
             alert('Введите целое не нудевое число');
             return false;
         }
-        this.setState({value: this.state.value + this.variable,
-            timerId: setInterval(()=>this.setState({value: this.state.value * this.variable}), 1000)
+        this.setState({value: this.state.value + this.state.delta,
+            timerId: setInterval(()=>this.setState({value: this.state.value * this.state.delta}), 1000)
         })
     }
 
     decrement() {
-        this.setState({value: this.state.value - this.variable})
+        this.setState({value: this.state.value - this.state.delta})
     }
 
     handleChange(event) {
-        this.variable = parseInt(event.target.value);
+        this.setState({delta: parseInt(event.target.value)});
     }
 
 
@@ -48,8 +49,3 @@ class Timer extends React.Component {
 }
 
 export default Timer
-
-
-
-
-
