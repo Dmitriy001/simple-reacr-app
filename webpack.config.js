@@ -29,6 +29,7 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx', '.css'],
   },
   stats: 'errors-only',
+  devtool: 'cheap-module-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
