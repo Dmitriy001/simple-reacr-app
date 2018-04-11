@@ -6,9 +6,10 @@ class Timer extends React.Component {
         this.state = {
             value: 0,
             delta: null,
-            tamerId: 0
+            tamerId: null
         }
     }
+
 
     toStop() {
         this.setState({timerId: clearInterval(this.state.timerId)});
@@ -38,18 +39,11 @@ class Timer extends React.Component {
         return (
             <div>
                 {isNaN(this.state.delta) ?
-                <span>
                     <input id="text" onChange={this.handleChange.bind(this)} style={{borderColor: 'red'}}/>
-                    <input id="inc" value="increment" onClick={this.increment.bind(this)} type="button" disabled/>
-                    <input id="dec" value="decrement" onClick={this.decrement.bind(this)} type="button" disabled/>
-                </span>
-                :
-                <span>
-                    <input id="text" onChange={this.handleChange.bind(this)}/>
-                    <input id="inc" value="increment" onClick={this.increment.bind(this)} type="button"/>
-                    <input id="dec" value="decrement" onClick={this.decrement.bind(this)} type="button"/>
-                </span>
-                }
+                    :
+                    <input id="text" onChange={this.handleChange.bind(this)}/>}
+                    <input id="inc" value="increment" onClick={this.increment.bind(this)} type="button" disabled={isNaN(this.state.delta) || this.state.tamerId == 0}/>
+                    <input id="dec" value="decrement" onClick={this.decrement.bind(this)} type="button" disabled={isNaN(this.state.delta) || this.state.tamerId == 0}/>
                 <span className="num">{this.state.value}</span>
                 <input className="stop" value="stop" type="button" onClick={this.toStop.bind(this)}/>
             </div>
