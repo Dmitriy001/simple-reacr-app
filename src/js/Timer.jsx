@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 
 class Timer extends React.Component {
@@ -6,7 +6,6 @@ class Timer extends React.Component {
         super();
         this.state = {
             value: 0,
-            variable: 0,
             tamerId: 0
         }
     }
@@ -16,21 +15,21 @@ class Timer extends React.Component {
     }
 
     increment() {
-        if (!this.state.variable) {
+        if (!this.variable) {
             alert('Введите целое не нудевое число');
             return false;
         }
-        this.setState({value: this.state.value + this.state.variable,
-            timerId: setInterval(()=>this.setState({value: this.state.value * this.state.variable}), 1000)
+        this.setState({value: this.state.value + this.variable,
+            timerId: setInterval(()=>this.setState({value: this.state.value * this.variable}), 1000)
         })
     }
 
     decrement() {
-        this.setState({value: this.state.value - this.state.variable})
+        this.setState({value: this.state.value - this.variable})
     }
 
     handleChange(event) {
-        this.setState({variable: parseInt(event.target.value)});
+        this.variable = parseInt(event.target.value);
     }
 
 
