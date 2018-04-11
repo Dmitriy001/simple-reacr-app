@@ -5,63 +5,51 @@ class Timer extends React.Component {
         super();
         this.state = {
             value: 0,
-            delta: 0,
+            delta: null,
             tamerId: 0
         }
     }
 
     toStop() {
         this.setState({timerId: clearInterval(this.state.timerId)});
-        document.getElementById('dec').disabled = false;
-        document.getElementById('inc').disabled = false;
     }
 
     increment() {
-        if (!this.checkInputValue(this.state.delta)) {
-            return false;
+        if(isNaN(this.state.delta) || this.state.delta == null) {
+            alert('Введите целое не нулевое значение')
         }
         this.setState({value: this.state.value + this.state.delta,
             timerId: setInterval(()=>this.setState({value: this.state.value * this.state.delta}), 1000)
         });
-        document.getElementById('dec').disabled = true;
-        document.getElementById('inc').disabled = true;
     }
 
     decrement() {
-        if (!this.checkInputValue(this.state.delta)) {
-            return false;
+        if(isNaN(this.state.delta) || this.state.delta == null) {
+            alert('Введите целое не нулевое значение')
         }
         this.setState({value: this.state.value - this.state.delta})
     }
 
     handleChange(event) {
-        document.getElementById('dec').disabled = false;
-        document.getElementById('inc').disabled = false;
         this.setState({delta: parseInt(event.target.value)});
     }
-
-    checkInputValue(value) {
-        if(isNaN(value) || !value) {
-            document.getElementById('dec').disabled = true;
-            document.getElementById('inc').disabled = true;
-            document.getElementById('text').setAttribute('style', "border-color: red");
-            alert('Введите целое не нудевое число');
-            return false;
-        } else {
-            document.getElementById('dec').disabled = false;
-            document.getElementById('inc').disabled = false;
-            document.getElementById('text').removeAttribute('style');
-            return true
-        }
-    }
-
 
     render () {
         return (
             <div>
-                <input id="text" onChange={this.handleChange.bind(this)}/>
-                <input id="inc" value="increment" onClick={this.increment.bind(this)} type="button"/>
-                <input id="dec" value="decrement" onClick={this.decrement.bind(this)} type="button"/>
+                {isNaN(this.state.delta) ?
+                <span>
+                    <input id="text" onChange={this.handleChange.bind(this)} style={{borderColor: 'red'}}/>
+                    <input id="inc" value="increment" onClick={this.increment.bind(this)} type="button" disabled/>
+                    <input id="dec" value="decrement" onClick={this.decrement.bind(this)} type="button" disabled/>
+                </span>
+                :
+                <span>
+                    <input id="text" onChange={this.handleChange.bind(this)}/>
+                    <input id="inc" value="increment" onClick={this.increment.bind(this)} type="button"/>
+                    <input id="dec" value="decrement" onClick={this.decrement.bind(this)} type="button"/>
+                </span>
+                }
                 <span className="num">{this.state.value}</span>
                 <input className="stop" value="stop" type="button" onClick={this.toStop.bind(this)}/>
             </div>
