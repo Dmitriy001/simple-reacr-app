@@ -1,6 +1,7 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: './src/js/index.jsx',
@@ -21,6 +22,13 @@ module.exports = {
         test: /\.jsx$/,
         include: path.resolve(__dirname, 'src'),
         use: ['babel-loader']
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ]
       }
     ],
   },
@@ -43,6 +51,10 @@ module.exports = {
       template: 'src/index.html',
       filename: 'index.html',
       inject: 'body',
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
     }),
     new webpack.HotModuleReplacementPlugin({}),
   ],
