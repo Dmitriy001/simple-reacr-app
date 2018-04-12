@@ -5,7 +5,8 @@ class TimerList extends React.Component {
     constructor() {
         super();
         this.state = {
-            numberOfTimers: 0
+            numberOfTimers: 0,
+            removeElem: null
         }
     }
 
@@ -22,9 +23,10 @@ class TimerList extends React.Component {
     render() {
         const list = [];
         for (let i = this.state.numberOfTimers; i > 0; i--) {
-            let elemlist = <li key={i.toString()}><Timer/><input value="delete" type="button" onClick={()=>{document.getElementById('timerlist').removeChild(document.querySelector(`[key = "${i.toString()}"]`))}}/></li>;
-            list.push(elemlist);
-        }
+            if(this.state.removeElem != i) {
+                let elemlist = <li key={i.toString()}><Timer/><input value="delete" type="button" onClick={() => this.setState({numberOfTimers: this.state.numberOfTimers-1, removeElem: i})}/></li>;
+                list.push(elemlist);}
+            }
         return (
             <div>
                 <input type='button' onClick={this.handlerClick.bind(this)} value='Add Timer'/>
