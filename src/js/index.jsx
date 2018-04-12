@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Timer from './Timer/index';
+import TimerList from './TimerList'
 
-ReactDOM.render(<Timer />, document.getElementById('app'));
+ReactDOM.render(<TimerList />, document.getElementById('app'));
 
