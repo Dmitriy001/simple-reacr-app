@@ -22,7 +22,7 @@ class TimerList extends React.Component {
     render() {
         const list = [];
         for (let i = this.state.numberOfTimers; i > 0; i--) {
-            let elemlist = <li key={i.toString()}><Timer/><input value="delete" type="button" onClick={}/></li>;
+            let elemlist = <li key={i.toString()}><Timer/><input value="delete" type="button" onClick={()=>{document.getElementById('timerlist').removeChild(document.querySelector(`[key = "${i.toString()}"]`))}}/></li>;
             list.push(elemlist);
         }
         return (
