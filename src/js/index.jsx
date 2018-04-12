@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TimerList from './TimerList'
+import LoginApp from './LoginApp'
 
-ReactDOM.render(<TimerList />, document.getElementById('app'));
+ReactDOM.render(<LoginApp />, document.getElementById('app'));
 
