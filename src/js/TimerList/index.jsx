@@ -16,9 +16,6 @@ class TimerList extends React.Component {
         })
     }
 
-    removeTimer() {
-
-    }
 
     render() {
         const list = [];

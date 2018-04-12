@@ -47,6 +47,10 @@ class Timer extends React.Component {
         this.setState({delta: parseInt(event.target.value)});
     }
 
+    componentWillUnmount() {
+        this.setState({timerId: clearInterval(this.state.timerId)});
+    }
+
     render () {
         return (
             <div>
