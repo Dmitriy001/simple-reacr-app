@@ -13,19 +13,22 @@ class TimerList extends React.Component {
         this.setState({
             numberOfTimers: this.state.numberOfTimers + 1
         })
+    }
+
+    removeTimer() {
 
     }
 
     render() {
         const list = [];
-        for (let i = this.state.numberOfTimers; i <= this.state.numberOfTimers; i--) {
-            let elemlist = <li key={i.toString()}><Timer/></li>;
-            list.push(elemlist)
+        for (let i = this.state.numberOfTimers; i > 0; i--) {
+            let elemlist = <li key={i.toString()}><Timer/><input value="delete" type="button" onClick={}/></li>;
+            list.push(elemlist);
         }
         return (
             <div>
                 <input type='button' onClick={this.handlerClick.bind(this)} value='Add Timer'/>
-                <ul>
+                <ul id="timerlist">
                     {list}
                 </ul>
             </div>
