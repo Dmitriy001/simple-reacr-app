@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import TimerList from './TimerList';
 import LoginApp from './LoginApp';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Timer from "./Timer";
 
 ReactDOM.render(
-    <BrowserRouter basename='/'>
+    <BrowserRouter>
         <div>
             <Switch>
                 <Route path='/timerlist' component={TimerList}/>
-                <Route path='/' component={LoginApp}/>
+                <Route exact path='/' component={LoginApp}/>
+                <Route path="/timer" component={Timer}/>
             </Switch>
         </div>
     </BrowserRouter>,
