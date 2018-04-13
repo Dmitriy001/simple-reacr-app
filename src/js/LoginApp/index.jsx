@@ -19,9 +19,8 @@ class LoginApp extends React.Component {
             alert('Заполните все поля');
             return false;
         } else {
-            e.preventDefault();
-            // const history = createHistory();
-            // history.push('/timerlist');
+            const history = createHistory();
+            history.push('/timerlist');
         }
 
     }
@@ -38,7 +37,6 @@ class LoginApp extends React.Component {
                     <input type="password" name="password" onChange={this.handleInputChange.bind(this)}
                            style={{borderColor: !this.state.password ? 'red' : ''}}/>
                     <input type="submit" value="Submit"/>
-
                 </form>
         )
     }

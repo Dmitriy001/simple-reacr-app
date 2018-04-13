@@ -37,7 +37,7 @@ class Timer extends React.Component {
 
     checkValue(value) {
         if(isNaN(value) || value == null) {
-            alert('Введите целое не нулевое значение')
+            alert('Введите целое не нулевое значение');
             return true;
         } else return false;
     }
