@@ -3,6 +3,7 @@ import './LoginApp.css'
 import { Route, Link, Switch } from 'react-router-dom'
 import TimerList from '../TimerList';
 import createHistory from "history/createBrowserHistory"
+import Timer from "../Timer";
 
 
 class LoginApp extends React.Component {
@@ -18,9 +19,7 @@ class LoginApp extends React.Component {
         if (!this.state.password || !this.state.email || this.state.password === true || this.state.email === true){
             e.preventDefault();
             alert('Заполните все поля');
-            return false;
         } else {
-
             const history = createHistory();
             history.push('/timerlist');
             e.preventDefault();
@@ -32,10 +31,16 @@ class LoginApp extends React.Component {
         this.setState({[event.target.name]: event.target.value});
     }
 
+    handleCheckButton() {
+        const history = createHistory();
+        history.push('/timerlist');
+    }
+
     render() {
         return (
             <div>
                 <form action='' onSubmit={this.handleSubmit.bind(this)}>
+                    <input type='button' value="checkbutton" onClick={this.handleCheckButton}/>
                     <input type="email" name="email" onChange={this.handleInputChange.bind(this)}
                            style={{borderColor: !this.state.email ? 'red' : ''}}/>
                     <input type="password" name="password" onChange={this.handleInputChange.bind(this)}
