@@ -21,6 +21,7 @@ class LoginApp extends React.Component {
         } else {
             const history = createHistory();
             history.push('/timerlist');
+            return false;
         }
 
     }
