@@ -20,8 +20,8 @@ class LoginApp extends React.Component {
             return false;
         } else {
             e.preventDefault();
-            const history = createBrowserHistory();
-            history.push('/timerlist');
+            // const history = createHistory();
+            // history.push('/timerlist');
         }
 
     }
@@ -38,16 +38,12 @@ class LoginApp extends React.Component {
                     <input type="password" name="password" onChange={this.handleInputChange.bind(this)}
                            style={{borderColor: !this.state.password ? 'red' : ''}}/>
                     <input type="submit" value="Submit"/>
-                    <Nav/>
+
                 </form>
         )
     }
 }
 
-const Nav = () => (
-    <Switch>
-        <Route path='/timerlist' component={TimerList} />
-    </Switch>
-);
+
 
 export default LoginApp
