@@ -1,14 +1,10 @@
 import React from 'react'
 import './LoginApp.css'
-import { Route, Link, Switch } from 'react-router-dom'
-import TimerList from '../TimerList';
-import createHistory from "history/createBrowserHistory"
-import Timer from "../Timer";
-
+import {Link} from 'react-router-dom'
 
 class LoginApp extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             email: true,
             password: true
@@ -20,8 +16,7 @@ class LoginApp extends React.Component {
             e.preventDefault();
             alert('Заполните все поля');
         } else {
-            const history = createHistory();
-            history.push('/timerlist');
+            this.props.history.push('./timerlist');
             e.preventDefault();
         }
 
@@ -31,31 +26,18 @@ class LoginApp extends React.Component {
         this.setState({[event.target.name]: event.target.value});
     }
 
-    handleCheckButton() {
-        const history = createHistory();
-        history.push('/timerlist');
-    }
 
     render() {
         return (
-            <div>
                 <form action='' onSubmit={this.handleSubmit.bind(this)}>
-                    <input type='button' value="checkbutton" onClick={this.handleCheckButton}/>
                     <input type="email" name="email" onChange={this.handleInputChange.bind(this)}
                            style={{borderColor: !this.state.email ? 'red' : ''}}/>
                     <input type="password" name="password" onChange={this.handleInputChange.bind(this)}
                            style={{borderColor: !this.state.password ? 'red' : ''}}/>
-                    <input type="submit" value="Submit"/>
-                    <Button/>
+                    <Link to='./timerlist'><input type="submit" value="Submit"/></Link>
                 </form>
-            </div>
         )
     }
 }
-
-
-const Button = () => (
-    <Link to="/timer"><button>use timer now</button></Link>
-);
 
 export default LoginApp

@@ -9,8 +9,8 @@ ReactDOM.render(
     <BrowserRouter>
         <div>
             <Switch>
+                <Route path='/login' component={LoginApp}/>
                 <Route path='/timerlist' component={TimerList}/>
-                <Route exact path='/' component={LoginApp}/>
                 <Route path="/timer" component={Timer}/>
             </Switch>
         </div>
