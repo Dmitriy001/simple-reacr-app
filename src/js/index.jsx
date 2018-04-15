@@ -9,7 +9,7 @@ ReactDOM.render(
     <BrowserRouter>
         <div>
             <Switch>
-                <Route path='/login' component={LoginApp}/>
+                <Route exact path='/' component={LoginApp}/>
                 <Route path='/timerlist' component={TimerList}/>
                 <Route path="/timer" component={Timer}/>
             </Switch>
