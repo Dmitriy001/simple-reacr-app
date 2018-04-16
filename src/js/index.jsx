@@ -4,7 +4,7 @@ import TimerList from './TimerList';
 import LoginApp from './LoginApp';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Timer from "./Timer";
-import Weather from './Weather'
+import Weather from './Weather';
 
 ReactDOM.render(
     <BrowserRouter>

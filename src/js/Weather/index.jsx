@@ -1,20 +1,16 @@
-import React from 'react'
-import axios from 'axios'
-import './weather.css'
-import img from './svg/wi-cloud.svg'
+import React from 'react';
+import axios from 'axios';
+import './weather.css';
 
 class Weather extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
+        this.state = {}
     }
 
     componentDidMount() {
         axios.get('https://api.openweathermap.org/data/2.5/weather?q=London&appid=967e07f7bd47f1096a587f111b2ffd28')
             .then((response) => {
-                console.log(JSON.parse(response.request.response));
                 const obj = JSON.parse(response.request.response);
                 this.setState({
                     name: obj.name,
@@ -28,14 +24,13 @@ class Weather extends React.Component{
     }
 
     render() {
-        let className = this.state.weather;
+        let icon = this.state.weather;
         return (
             <div>
                 <p>{this.state.name}</p>
                 <span>{this.state.temp}&deg;</span>
-                <div className={className}></div>
+                <div className={icon}></div>
                 <p>{this.state.weather}</p>
-
             </div>
         )
     }
