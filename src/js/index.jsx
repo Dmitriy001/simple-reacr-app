@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Timer from "./Timer";
 import Weather from './Weather';
 
+
 ReactDOM.render(
     <BrowserRouter>
         <div>
@@ -14,6 +15,7 @@ ReactDOM.render(
                 <Route path='/timerlist' component={TimerList}/>
                 <Route path="/timer" component={Timer}/>
                 <Route path="/weather" component={Weather}/>
+
             </Switch>
         </div>
     </BrowserRouter>,
