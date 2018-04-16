@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import './weather.css'
+import img from './svg/wi-cloud.svg'
 
 class Weather extends React.Component{
     constructor(props) {
@@ -27,12 +28,14 @@ class Weather extends React.Component{
     }
 
     render() {
+        let className = this.state.weather;
         return (
             <div>
                 <p>{this.state.name}</p>
-                <p>{this.state.temp}&deg;</p>
+                <span>{this.state.temp}&deg;</span>
+                <div className={className}></div>
                 <p>{this.state.weather}</p>
-                <div className={this.state.weather}></div>
+
             </div>
         )
     }

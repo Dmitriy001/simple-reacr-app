@@ -1,4 +1,12 @@
-/*.clouds {*/
-    /*background-image: url("svg/wi-cloud.svg");*/
-/*}*/
+.clouds {
+    background: url("svg/wi-cloud.svg") no-repeat;
+    width: 100px;
+    height: 50px;
+}
+
+.clear {
+    background: url("svg/wi-day-sunny.svg") no-repeat;
+    width: 100px;
+    height: 50px;
+}
 
